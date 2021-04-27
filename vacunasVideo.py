@@ -11,7 +11,6 @@ import bar_chart_race as bcr
 
 df = pd.read_csv('https://raw.githubusercontent.com/3dgiordano/covid-19-uy-vacc-data/main/data/Subnational.csv',sep=",")
 df['date'] =  df['date'].apply(lambda x: pd.to_datetime(x, format = '%Y-%m-%d') )
-df['region'].replace({"UY-MA":"Maldonado"},inplace=True)
 df = df.groupby(['date','region']).sum().reset_index()
 dfPivot = df.pivot(index='date', columns='region', values='people_vaccinated')
 
