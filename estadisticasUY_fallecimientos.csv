@@ -2827,6 +2827,7 @@ fecha,nombre,edad
 04/05/2021,Tacuarembó,67
 04/05/2021,Tacuarembó,76
 04/05/2021,Tacuarembó,82
+<<<<<<< HEAD
 05/05/2021,Canelones,50
 05/05/2021,Canelones,51
 05/05/2021,Canelones,53
@@ -2884,3 +2885,5 @@ fecha,nombre,edad
 05/05/2021,Soriano,71
 05/05/2021,Tacuarembó,95
 05/05/2021,Treinta y Tres,80
+=======
+>>>>>>> parent of b6ae3f3... update 5/5
