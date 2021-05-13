@@ -8,20 +8,27 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import datetime 
-
-
+ 
+ 
 df = pd.read_csv('https://raw.githubusercontent.com/lscasso/covid/main/estadisticasUY_fallecimientos.csv',sep=",")
 df['fecha'] =  df['fecha'].apply(lambda x: pd.to_datetime(x, format = '%d/%m/%Y') )
 
+#bins= [18,50,60,71,80,120,121]
 bins= [18,50,60,71,80,120]
+#labels = ['18-49','50-59','60-70','71-79','80 o más','Contrafactual 80+']
 labels = ['18-49','50-59','60-70','71-79','80 o más']
 
 df['GrupoEdad'] = pd.cut(df.edad, bins= bins, labels=labels,right=False)
+
 porEdad = df.groupby(['fecha','GrupoEdad']).size().reset_index(name='count')
+
 pEdad = porEdad.pivot(index='fecha', columns='GrupoEdad', values='count')
 fecha = pEdad.index.max()
 
 diasAGraficar = [7,14]
+
+#pEdad ['Contrafactual 80+'] =  pEdad['71-79']*2
+#pEdad[:datetime.datetime(2021,4,13)]['Contrafactual 80+'] = pEdad[:datetime.datetime(2021,4,14)]['80 o más']
 ySub = 11
 ajusteSub = 1
 

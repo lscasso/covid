@@ -40,6 +40,7 @@ for  dias in diasAGraficar:
     
     plt2 = a.plot(legend='reverse',xlabel="Fecha", title='Evolución de fallecimientos por edad en relación al promedio diario de febrero\nPromedio ' + str(dias) + ' días al ' + fecha.strftime("%d/%m/%Y"))
     plt2.yaxis.set_major_formatter(PercentFormatter(1))
+   
     plt2.axvline(x=datetime.datetime(2021,3,22),color=u'm',linestyle='--',alpha=0.5, linewidth=0.5)
     plt2.text(x=datetime.datetime(2021,3,22-ajusteSub),y=ySub,s='Inicio vacunación\n80 o más',rotation=90,color=u'm',fontsize=6)
     
@@ -47,17 +48,15 @@ for  dias in diasAGraficar:
     plt2.text(x=datetime.datetime(2021,4,10-ajusteSub),y=ySub,s='Inicio vacunación\n71-79',rotation=90,color=u'r',fontsize=6)
     
     plt2.axvline(x=datetime.datetime(2021,3,15),color=u'g',linestyle='--',alpha=0.5, linewidth=0.5)
-    plt2.text(x=datetime.datetime(2021,3,15-ajusteSub),y=ySub,s='Inicio vacunación\n60-70',rotation=90,color='g',fontsize=6)
+    plt2.text(x=datetime.datetime(2021,3,15-ajusteSub),y=ySub-6.5,s='Inicio vacunación\n60-70',rotation=90,color='g',fontsize=6)
     
     plt2.axvline(x=datetime.datetime(2021,3,8),color=u'#ff7f0e',linestyle='--',alpha=0.5, linewidth=0.5)
-    plt2.text(x=datetime.datetime(2021,3,8-ajusteSub),y=ySub,s='Inicio vacunación\n50-59',rotation=90,color=u'#ff7f0e',fontsize=6)
+    plt2.text(x=datetime.datetime(2021,3,8-ajusteSub),y=ySub-6.5,s='Inicio vacunación\n50-59',rotation=90,color=u'#ff7f0e',fontsize=6)
     
     plt2.axvline(x=datetime.datetime(2021,3,29),color=u'b',linestyle='--',alpha=0.5, linewidth=0.5)
     plt2.text(x=datetime.datetime(2021,3,29-ajusteSub),y=ySub,s='Inicio vacunación\n18-49',rotation=90,color='b',fontsize=6)
     
-    
     plt2.axhline(y=1,color=u'k',linestyle='--',alpha=0.5, linewidth=0.5)
     plt2.text(y=0.65,x=datetime.datetime(2021,3,27),s='Promedio fallecidos diarios\nfebrero 2021',color='k',fontsize=6)
-    
     fig = plt2.get_figure()
     fig.savefig("promOutput" + str(dias) + ".png", dpi=300, bbox_inches='tight')
